@@ -1,0 +1,9 @@
+#Ignore all Thesis.*
+Thesis.*
+#but leave the source
+!Thesis.tex
+ 
+.*
+*.log
+!.gitignore
+*~
