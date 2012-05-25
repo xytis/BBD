@@ -1,0 +1,36 @@
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=4cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=6em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex', ultra thick]
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+    
+\begin{tikzpicture}[node distance = 4cm, auto]
+    % Place nodes
+    \node [block] (init) {Simuliacijos būsenos išsaugojimas};
+    \node [block, below of=init] (timestep) {\( t_j = t_{j-1} + \Delta t_j\)};
+    \node [block, below of=timestep] (calculate) {Naujos būsenos skaičiavimai};
+    \node [block, left of=timestep] (change) {\(\Delta t_j = \frac{\Delta t_j}{10}\)};
+    \node [block, left of=calculate] (restore) {Atstatome paskutinę sistemos būseną};
+    \node [decision, below of=calculate] (check) {Ar pažeisti tikslumo reikalavimai?};
+    \node [decision, right of=check, node distance=8cm] (end) {Ar simuliacija baigta?};
+    \node [decision, above of=end] (timecheck) {Ar galima atstatyti laiko žingsnį?};
+    \node [block, right of=timestep] (backroll) {\(\Delta t_j = 10 \Delta t_j \)};
+    \node [block, below of=end] (final) {Pabaiga};
+
+    % Draw edges
+    \path [line] (init) -- (timestep);
+    \path [line] (timestep) -- (calculate);
+    \path [line] (calculate) -- (check);
+    \path [line] (check) -| node [near start] {Taip} (restore);
+    \path [line] (restore) -- (change);
+    \path [line] (change) |- (init);
+    \path [line] (check) -- node [near start] {Ne} (end);
+    \path [line] (end) -- node [near start] {Ne} (timecheck);
+    \path [line] (timecheck) |- node [near start] {Ne} (init);
+    \path [line] (timecheck) -- node [near start] {Taip} (backroll);
+    \path [line] (backroll) -- (init);
+    \path [line] (end) -- node [near start] {Taip} (final);
+\end{tikzpicture}

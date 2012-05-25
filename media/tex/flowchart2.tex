@@ -1,0 +1,19 @@
+% Define block styles
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=10em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex', ultra thick]
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=4em]
+    
+\begin{tikzpicture}[node distance = 3cm, auto]
+    % Place nodes
+	\node [block] (field) {Suskaičiuojamas momentinis elektrinio lauko pasiskirstymas bandinyje};    
+    \node [block, below of=field] (recom) {Suskaičiuojami rekombinavę krūvininkai};
+    \node [block, below of=recom] (car) {Suskaičiuojami dreifuojantys ir difunduojantys krūvininkai};
+    \node [block, below of=car] (sum) {Susumuojamas srovės tankis};
+
+    % Draw edges
+    \path [line] (field) -- (recom);
+    \path [line] (recom) -- (car);
+    \path [line] (car) -- (sum);
+\end{tikzpicture}
