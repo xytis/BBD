@@ -8,7 +8,9 @@
   \label{fig:algoritmas}
 \end{figure}
 
-Krūvininkų pernašos reiškiniai skaitmeniškai modeliuojami jau gana seniai \cite{juška:4946}, tam yra parašyta nemažai programų, tačiau daugelis jų yra pritaikytos vienai medžiagų klasei arba vienam eksperimento variantui. Tuo tarpu šiame darbe aptariama programa rašyta norint kuo plačiau ją taikyti, darant kuo mažesnius pakeitimus išeities tekste. Dėl to remtasi objektinio programavimo paradigma, skaidant programos funkcijas į atskirus elementus, kurie veikia nepriklausomai vienas nuo kito ir suteikia vartotojui galimybę keisti programos funkcionalumą nekeičiant pačios programos.
+Krūvininkų pernašos reiškiniai skaitmeniškai modeliuojami jau gana seniai \cite{juška:4946}, tam yra parašyta nemažai programų, tačiau daugelis jų yra pritaikytos vienai medžiagų klasei arba vienam eksperimento variantui analizuoti. Ši programa buvo kurta naudoti eksperimentų metu, kaip pagalbinė priemonė rezultatų interpretavimui. Patogiam rezultatų lyginimui skaičiavimuose naudojami realūs eksperimento parametrai, o ne normuoti dydžiai. Taip pat pradiniai krūvininkų tankiai suskaičiuojami iš šviesos intensyvumo ir sugerties profilio. Laikoma, jog šviesos impulso trukmė yra daug mažesnė už difuzinės relaksacijos ir krūvininkų rekombinacijos trukmes. Programa sprendžia krūvininkų pasiskirstymo uždavinį ir suskaičiuoja teorinę photo-CELIV kinetiką. Pasirinktinai gali būti išvedami krūvininkų arba elektrinio lauko pasiskirstymai bandinyje bet kuriuo laiko momentu.
+
+Rašant šią programą vienas iš tikslų buvo kuo plačiau ją taikyti, darant kuo mažesnius pakeitimus išeities tekste. Dėl to remtasi objektinio programavimo paradigma, skaidant programos funkcijas į atskirus elementus, kurie veikia nepriklausomai vienas nuo kito ir suteikia vartotojui galimybę keisti programos funkcionalumą nekeičiant pačios programos.
 \subsection{Veikimas}
 
 \begin{wrapfigure}{r}{0.5\textwidth}
@@ -22,7 +24,7 @@ Krūvininkų pernašos reiškiniai skaitmeniškai modeliuojami jau gana seniai \
 Programa veikia remdamasi įvesties failu, kuriame yra apibūdintas simuliuojamas eksperimentas, surašomi fizikiniai parametrai ir pasirenkamos pradinės sąlygos. Pagrindinis programos ciklas skaito ir atpažįsta komandas įvesties faile, bei iškviečia atitinkamus programos modulius toms komandoms įvykdyti. Šios programos patogumą padidina ir integruotas skaičiuotuvo modulis, leidžiantis įvesties faile atlikti daugelį matematinių veiksmų, taip palengvinant teorinio modelio sutapatinimą su atliekamu eksperimentu.
 Visoje programoje naudojami nenormuoti fizikiniai dydžiai SI sistemos vienetais.
 \subsection{Moduliai}
-Programai sukurti keli atskiri moduliai, kurie leidžia ją taikyti įvairių eksperimentų teoriniams rezultatams modeliuoti, tarkime lėkio trukmės matavimams (ToF). Šiame darbe naudoti moduliai yra skirti photo-CELIV skaičiavimams. Kiekvienas iš anksčiau paminėtų modulių naudojasi baziniu moduliu, kuris skirtas tankio pasiskirstymo uždavinių sprendimui. Jo veikimo schema pavaizduota  \ref{fig:algoritmas} paveiksliuke. Šiame modulyje veikia adaptyvaus laiko žingsnio algoritmas, kuris leidžia didinti ir mažinti laiko žingsnį priklausomai nuo skaičiavimų tikslumo sąlygos \eqref{eq:tikslumas}. Bazinis modulis savo ruožtu naudoja skaičiavimo modulį atskiriems fizikiniams reiškiniams įtraukti. Toks programos skaidymas leidžia nesunkiai modifikuoti programos darbą įjungiant arba išjungiant atskirus fizikinių skaičiavimų modulius. Tačiau fizikinių reiškinių įtraukimo seka yra griežtai nurodyta (žr.  \ref{fig:skaičiavimas} pav.).
+Programai sukurti keli atskiri moduliai, kurie leidžia ją taikyti įvairių eksperimentų teoriniams rezultatams modeliuoti, tarkime lėkio trukmės matavimams (ToF). Šiame darbe naudoti moduliai yra skirti photo-CELIV skaičiavimams. Kiekvienas iš anksčiau paminėtų modulių naudojasi baziniu moduliu, kuris skirtas tankio pasiskirstymo uždavinių sprendimui. Jo veikimo schema pavaizduota  \ref{fig:algoritmas} paveiksliuke. Šiame modulyje veikia adaptyvaus laiko žingsnio algoritmas, kuris leidžia didinti ir mažinti laiko žingsnį priklausomai nuo skaičiavimų tikslumo sąlygos \eqref{eq:tikslumas}. Bazinis modulis savo ruožtu naudoja skaičiavimo modulį atskiriems fizikiniams reiškiniams įtraukti. Toks programos skaidymas leidžia nesunkiai modifikuoti programos darbą įjungiant arba išjungiant atskirus fizikinių skaičiavimų modulius. Tačiau fizikinių reiškinių įtraukimo seka yra griežtai nurodyta (žr. \ref{fig:skaičiavimas} pav.).
 
 Visiems fizikiniams skaičiavimams reikia vieną kartą „pereiti“ per visą bandinio sudalinimų masyvą, atliekant skaičiavimus su kiekvienu narveliu atskirai. Dėl to visų fizikinių skaičiavimų sudėtingumas yra \(\sim O(M)\). Akivaizdu, jog suminis visos simuliacijos sudėtingumas yra \(O(M \cdot K)\), kur \(K\) atliktų laiko iteracijų skaičius. Laiko žingsnio parinkimas patikimas programos vykdymo metu veikiančiam algoritmui, kuris seka, ar nepažeidžiami tikslumo reikalavimai:
 \begin{equation} \label{eq:tikslumas}
@@ -36,7 +38,7 @@ Geriausiu atveju \(K= \frac{t_{simuliacijos}}{\Delta t_{maksimalus}}\), blogiaus
 
 Jei skaičiavimuose reikalinga aproksimacija, visur be išimčių naudojami tiesiniai artiniai, dėl to tikslumas priklauso nuo sudalinimų skaičiaus \(M\) pirmame laipsnyje.
 
-\subsection{Simuliacija}
+\subsection{Kinetikos}
 
 \begin{figure}
 \centering
@@ -48,13 +50,29 @@ Jei skaičiavimuose reikalinga aproksimacija, visur be išimčių naudojami ties
 
 Šios programos funkcija -- atkartoti realaus eksperimento eigą ir pateikti teorinį rezultatą, kurį galima tapatinti su realiu eksperimentu.
 
-Realios photo-CELIV kinetikos susideda iš dviejų dalių: talpinio šuoliuko, atsirandančio dėl išorinės įtampos, prijungtos prie bandinio, ir krūvininkų ištraukimo sąlygotos kinetikos dalies \cite{juška:4946}. Šioje programoje dėl paprastumo talpinis šuoliukas nėra modeliuojamas (žr. \ref{fig:suoliai}~pav.). Jis pridedamas apdorojimo metu \(I_0 = \frac{\varepsilon \varepsilon_0 A S}{d}\).
+Realios photo-CELIV kinetikos susideda iš dviejų dalių: talpinio šuoliuko, atsirandančio dėl išorinės įtampos, prijungtos prie bandinio, ir krūvininkų ištraukimo sąlygotos kinetikos dalies \cite{juška:4946}. Šioje programoje dėl paprastumo talpinis šuoliukas nėra modeliuojamas (žr. \ref{fig:suoliai}~pav.). Jis gali būti pridedamas apdorojimo metu \(I_0 = \frac{\varepsilon \varepsilon_0 A S}{d}\).
 
 Kinetikos atvaizduojant normuotos į srovę \(I_0\) ir į teorinę CELIV lėkio trukmę \(t_{tr} = d \sqrt{\frac{2}{\mu A}} \) \cite{juška:155202}. Čia \(A\) [CELIV] įtampos kilimo koeficientas.
+
+\subsection{Simuliacija}
 
 Norėdami ištirti difuzijos įtaką krūvininkų pernašai photo-CELIV atveju simuliuojame eksperimentą, kurio metu po fotogeneracijos bandinys paliekamas laikui \(t_{delay}\) atjungtas nuo išorinės grandinės, taigi jo viduje vyksta tik krūvininkų rekombinacija ir difuzija. Tokiu būdu galime atskirti stiprų pradinį difuzijos signalą nuo kitos CELIV signalo dalies.
 
 Norėdami ištirti difuzijos įtaką krūvininkų rekombinacijos spartos matavimui, simuliuojame realų rekombinacijos spartos matavimą: keičiame \(t_{delay}\) ir sekame photo-CELIV srovės maksimumo vertės kitimą. Iš sumodeliuotų maksimumo vertės priklausomybių nuo užlaikymo trukmės galėsime nustatyti atsirandančią paklaidą dėl difuzijos.
 
-\subparagraph*{Papildomos sąlygos,}\label{page:params} kurių laikėmės visų modeliavimų metu: Trikampio įtampos signalo trukmė 0.1ms, įtampa kinta nuo 0 iki 1V. Krūvininkų judrių santykis \(\frac{\mu_n}{\mu_p} = 1000\), taigi praktiškai juda tik vieni krūvininkai, mūsų atveju -- su neigiamu krūviu. Pasirinkti pilnai blokuojantys bandinio kontaktai, tokie, kad krūvininkai per juos negalėtų nei patekti į bandinį  nei išeiti iš jo.
-Pasirinktas fotogeneracijos intensyvumo parametras \(I_0 S \equiv L = 10^6 \) nes su tokia verte daugelyje kinetikų pasiekiama soties nuo generacijos intensyvumo vertė, plačiau aprašyta \cite{juška:155202}. Pavyzdinis tokios simuliacijos įvesties failas pateiktas priede \ref{app:failas}.
+\subsection{Sąlygos}
+\label{page:params}
+\begin{itemize}
+\item Trikampio įtampos signalo trukmė 0.1ms, įtampa kinta nuo 0 iki 1V.
+\item Krūvininkų judrių santykis \(\frac{\mu_n}{\mu_p} = 1000\), taigi praktiškai juda tik vieni krūvininkai, mūsų atveju -- su neigiamu krūviu. 
+\item Pasirinkti pilnai blokuojantys bandinio kontaktai, tokie, kad krūvininkai per juos negalėtų nei patekti į bandinį  nei išeiti iš jo. Pora skaičiavimų atlikti su vienu atviru kontaktu.
+\item Pasirinktas šviesos intensyvumo parametras \(I_0 S \equiv L = 10^{10} \) nes su tokia verte pasiekiama soties nuo generacijos intensyvumo vertė, plačiau aprašyta \ref{page:saturation} skyrelyje.
+\end{itemize}
+Pavyzdinis tokios simuliacijos įvesties failas pateiktas priede \ref{app:failas}.
+
+\subsection{Pastabos}
+\label{page:specials}
+\begin{itemize}
+\item Visame darbe bus naudojamos srovės kinetikos be talpinio šuolio (žr. \ref{fig:suoliai} pav.).
+\item Skaitmeninio modeliavimo netikslumai neleidžia skaičiuoti su be galo mažu laiko žingsniu, dėl to susidurta su efektyvia krūvininkų kiekio riba, kurią peržengus išryškėja paklaidos dėl C++ \textbf{double} kintamųjų tipo verčių netikslumo. Šią ribą apytiksliai atitinka šviesos intensyvumo parametras $L=10^{20}$.
+\end{itemize}

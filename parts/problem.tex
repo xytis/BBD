@@ -1,29 +1,37 @@
-\section{Problemos}
+\section{Uždaviniai}
 
-Praeituose darbuose nustatyta, jog esant paviršinei šviesos sugerčiai $(\alpha d > 1)$ sudaromi pakankami krūvininkų pasiskirstymo gradientai, kad modeliuojamose photo-CELIV kinetikose matytųsi difuzinė srovės komponentė.
-[Paveiksliukas]
+\begin{figure}
+  \centering
+	\subfloat[Be užlaikymo]{
+		\label{fig:disappear}
+		\includegraphics[width=0.5\textwidth]{./media/pdf/disappear.pdf}
+		}
+	\subfloat[Su užlaikymu]{
+		\label{fig:exist}
+		\includegraphics[width=0.5\textwidth]{./media/pdf/exist.pdf}
+		}
+  \caption{Difuzijos pikas matomas photo-CELIV srovės kinetikoje}
+  \label{fig:celiv_example}
+\end{figure}
 
-Priklausomai nuo skaičiavimo būdo skiriasi difuzijos įtaka skaičiuojamam rezultatui.
+Praeitame darbe \cite{vytis:kursinis} nustatyta, jog esant paviršinei šviesos sugerčiai $(\alpha d > 1)$ sudaromi pakankami krūvininkų pasiskirstymo gradientai, kad modeliuojamose photo-CELIV kinetikose matytųsi difuzinė srovės komponentė (žr. \ref{fig:celiv_example} pav.). Taip pat pastebėta, jog difuzijos komponentė keičia kinetikos maksimumo padėtį ir vertę.
 
-Dėl atsiradusios difuzijos komponentės pakinta šie matavimų rezultatai:
+Kai kurie fizikiniai dydžiai gali būti skaičiuojami pagal kinetikos maksimumo vertę ir padėtį, taigi dėl difuzijos komponentės gali kisti šių matavimų rezultatai: rekombinacijos koeficiento ir judrio.
 
 \subsection{Rekombincijos matavimai}
 
-Skaičiavimai atlikti naudojant bimolekulinės Lanževeno rekombinacijos atvejį. Suskaičiavus srovės kinetikas esant skirtingoms užlaikymo trukmėms pagal kinetikos maksimumo vertės kitimą perskaičiuotas rekombinacijos koeficientas. Jis palygintas su pradinių skaičiavimuose naudotu koeficientu.
+Rekombinacijos koeficientas gali būti nustatytas pagal kinetikos maksimumo vertės sotinimasį nuo generuojamų krūvininkų kiekio \cite{juška:155202}. Difuzijos įtakos įvertinimui suskaičiuosime photo-CELIV kinetikas įskaitant difuziją ir be jos. Iš šių kinetikų suskaičiuosime rekombinacijos koeficientą ir palyginsime su tikruoju, kuris naudotas skaičiavimuose.
 
-[Ar reikia formulės?]
-
-[Paveiksliukas] 
-
-Pastebėta, jog atsiranda neatitinkimai tarp realaus (nustatyto) rekombinacijos koeficiento ir apskaičiuoto (virtualiai išmatuoto) koeficiento.
+\paragraph{Skaičiavimų ribojimai}
+Įtraukus difuziją pastebėta, jog esant paviršinei sugerčiai pradinis difuzinės srovės pikas "praryja" srovės maksimumą (žr. \ref{fig:disappear} pav.).
+Norėdami to išvengti visus soties vertės skaičiavimus atlikome su kiek įmanoma mažu uždelsimo laiku $t_{delay} = 3.125ns$, tam kad atskirti pradinį difuzijos piką ir CELIV kinetiką (žr. \ref{fig:exist} pav.). Toks sprendimas nepakeičia suskaičiuotų rezultatų svarbos, nes labai dažnai realaus eksperimento metu egzistuoja laiko tarpas tarp šviesos impulso ir įtampos impulso.
 
 \subsection{Judrio matavimai}
+Photo-CELIV maksimumo padėtis leidžia nustatyti krūvininkų judrį pagal sąryšį:
+\begin{equation}
+\label{eq:judris}
+\mu = \frac{2d^2}{At_{max}^2}
+\end{equation}
 
-Pagal [čia] aptartą būdą skaičiuojant krūvininkų judrį iš srovės kinetikų gaunama tokia krūvinikų judrio priklausomybė nuo užlaikymo laiko.
-[Paveiksliukas]
+Pasinaudodami suskaičiuotomis srovės kinetikomis, pagal \eqref{eq:judris} formulę suskaičiuosime krūvininkų judrį ir palyginsime su tikruoju parametru, kuris naudotas skaičiavimuose. Šiuose skaičiavimuose neįtrauksime pataisos koeficiento K \cite{juška:155202}, nes tirsime judrio skaičiavimo validumą esant užlaikymo laikui $t_{delay}$ ir difuzijai.
 
-Anksčiau panašūs rezultatai buvo aiškinami krūvininkų prilipimu. Tačiau šioje simuliacijoje krūvininkų prilipimas nėra įskaitomas, taigi egzistuoja kitos priežastys šiam kitimui.
-
-\subsection{Skaičiavimai} 
-
-Šitiem dalykams stebėti mes suskaičiavom tai: ... ?

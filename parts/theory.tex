@@ -1,8 +1,7 @@
  
 \section{Naudojamas teorinis modelis}
 
-Šiame darbe modelis pasirinktas atsižvelgiant į vyksmus netvarkiose organinėse medžiagose, tačiau bandyta neapriboti modelio viena medžiagų klase. Taigi modelyje ir simuliacijos programoje yra įskaitomi difuzijos ir krūvininkų dreifo bei rekombinacijos reiškiniai. Patogiam programos rezultatų lyginimui su photo-CELIV eksperimentais programa naudoja realius eksperimentinius parametrus, o ne normuotus dydžius. Taip pat pradiniai krūvininkų tankiai suskaičiuojami iš šviesos intensyvumo ir sugerties profilio. Modelyje laikoma, jog šviesos impulso trukmė yra daug mažesnė už difuzinės relaksacijos ir krūvininkų rekombinacijos trukmes.
-Matematinis modelis yra krūvininkų pasiskirstymo uždavinys, kuriame įskaitant krūvininkų pernašą ir rekombinaciją stebima sistemos laikinė evoliucija. Rezultatas -- teorinė photo-CELIV kinetika. Taip pat gali būti atvaizduojami krūvininkų arba elektrinio lauko pasiskirstymai bandinyje bet kuriuo laiko momentu.
+Šiame darbe naudojamas modelis pasirinktas atsižvelgiant į vyksmus netvarkiose organinėse medžiagose, tačiau bandyta neapriboti modelio viena medžiagų klase. Taigi modelyje yra įskaitomi difuzijos ir krūvininkų dreifo bei rekombinacijos reiškiniai kiek įmanoma bendresniu pavidalu. 
 
 \subsection{Uždavinio diskretizavimas}
 
@@ -24,7 +23,7 @@ N_i = \frac { n(x_i) + n(x_i+1)}{2} \Delta x S\\
 P_i = \frac { p(x_i) + p(x_i+1)}{2} \Delta x S
 \end{array}
 \end{equation}
-Čia \(x_i=x i\), kur \(i \in [0,M)\) narvelio numeris, \(x\) narvelio plotis,\(S\) bandinio plotas (žr. \ref{fig:diskretizavimas}~pav.).
+Čia \(x_i= \Delta x i\), kur \(i \in [0,M)\) narvelio numeris, \(\Delta x\) narvelio plotis, \(S\) bandinio plotas (žr. \ref{fig:diskretizavimas}~pav.).
 \begin{figure}
   \centering
     \includegraphics[scale=0.9]{./media/pdf/il1}
@@ -45,7 +44,7 @@ t_j = t_{j-1} + \Delta t_j
 
 \subsection{Dreifas}
 
-Modelyje krūvininkų pernaša vyksta dėl dreifo ir difuzijos. Dreifas skaičiuojamas naudojantis Drūdės modeliu \cite{ashcroft}, kuris teigia, jog esant elektriniam laukui kietajame kūne krūvininkai juda greičiu proporcingu lauko stipriui. Šis greitis vadinamas dreifo greičiu \(v_d\).
+Modelyje krūvininkų pernaša vyksta dėl dreifo ir difuzijos. Dreifas skaičiuojamas naudojantis Drūdės modeliu \cite{ashcroft}, kuris teigia, jog esant elektriniam laukui kietajame kūne krūvininkai juda greičiu proporcingu lauko stipriui. Šis greitis vadinamas dreifo greičiu $v_d$.
 \begin{equation}
 	v_d= \mu E
 \end{equation}
@@ -55,12 +54,12 @@ Naudojantis greičio išraiška galime užrašyti srovės tankį:
 \begin{equation} \label{eq:tankis}
 	j_d = v_d n e = \mu n e E
 \end{equation}
-Iš kitos pusės, pagal apibrėžimą laikydamiesi anksčiau aprašyto diskretizavimo, srovės tankį galime užrašyti taip:
+Iš kitos pusės, laikydamiesi anksčiau aprašyto diskretizavimo, srovės tankį pagal apibrėžimą galime užrašyti taip:
 \begin{equation} \label{eq:pokytis}
 \frac{\Delta N_{i,j}}{\Delta t_j} \frac{e}{S}=(j_d)_{i,j}
 \end{equation}
 	
-Krūvininkai, išėję iš narvelio per laiko žingsnį \(\Delta t_j\) sukuria srovę. Nuo krūvininkų ženklo ir išėjimo krypties priklauso sukurtos srovės kryptis. Simuliacijos metu laikoma, jog teigiamą srovę sukuria neigiami krūvininkai judantys koordinatės indekso i didėjimo kryptimi.
+Krūvininkai, išėję iš narvelio per laiko žingsnį \(\Delta t_j\) sukuria srovę. Nuo krūvininkų ženklo ir išėjimo krypties priklauso sukurtos srovės kryptis. Simuliacijos metu laikoma, jog teigiamą srovę sukuria neigiami krūvininkai judantys koordinatės indekso $i$ didėjimo kryptimi.
 Taigi suminis srovės tankis laiko momentu \(t_j\) yra toks:
 \begin{equation}
 j_d(t_j)= \sum_{i=0}^{M} (j_d)_{i,j}
@@ -85,7 +84,7 @@ Vidinio lauko stipris turi būti apskaičiuojamas naudojant Puasono lygtį:
 	E_{in}(x)=-\frac{e}{\varepsilon \varepsilon_0 S} \int_{0}^{x} x(n-p)dx
 \end{equation}
 Matome, jog vidinis elektrinis laukas paverčia nagrinėjamą problemą į integro-diferencialinę lygtį.
-Pereiname prie diskretizavimo:
+Pereiname prie diskretinės išraiškos:
 \begin{equation}
 	E_{in,i}=-\frac{e}{\varepsilon \varepsilon_0 S } \sum_{k=0}^{i}(N_k-P_k)
 \end{equation}
@@ -105,7 +104,7 @@ Krūvininkų tankio antrą išvestinę pagal koordinatę keičiame į gretimų n
 \begin{equation} \label{eq:difuzija}
 \frac{\Delta N_{i,j}}{\Delta t_j} = -D \frac{(N_{i,j-1}-N_{i-1,j-1})}{(\Delta x)^2} - D \frac{(N_{i,j-1}-N_{i+1,j-1})}{(\Delta x)^2}
 \end{equation}
-Šiame modelyje naudojamės Einšteino sąryšiu:
+Šiame modelyje naudojamės Einšteino sąryšiu difuzijos koeficientui suskaičiuoti:
 \[
 	D=\frac{k_B T \mu }{e}
 \]	
@@ -120,7 +119,7 @@ Kadangi formulė \eqref{eq:difuzija} aprašo bendrą krūvininkų skaičiaus kit
 	
 \subsection{Rekombinacija}
 
-Kietajame kūne egzistuoja keli krūvininkų rekombinacijos mechanizmai, pavyzdžiui monomolekulinė rekombinacija, bimolekulinė ar trimolekulinė (Ožė) rekombinacija. Organiniuose puslaidininkiuose monomolekulinė rekombinacija vyksta, kai judantį krūvininką pagauna rekombinacijos centras. Toks mechanizmas priklauso tik nuo vienų krūvininkų tankio, laikant jog centrų kiekis yra daug didesnis ir nekinta vykstant rekombinacijai. Tuo tarpu esant palyginamiems abiejų ženklų krūvininkų tankiams arba kai krūvininkai juda nestipriame potenciniame lauke, rekombinacijos sparta ima priklausyti nuo abiejų ženklų krūvininkų tankių. Būtent tokios sąlygos pasirinktos aprašomame modelyje. Organinėse medžiagose bimolekulinę rekombinaciją lemia dar ir tai, kad pernaša vyksta šuoliais arba krūvininkams tuneliuojant per tarpmolekulinius barjerus. Kitaip tariant krūvininkai yra priversti kurį laiką būti lokalizuoti ties viena molekule, ir tuo metu gali rekombinuoti su kitu atėjusiu krūvininku. Trimolekulinė rekombinacija yra nežymi organiniuose puslaidininkiuose, taigi jos galime nepaisyti \cite{juška:143303,juška:013303}.
+Kietajame kūne egzistuoja keli krūvininkų rekombinacijos mechanizmai, pavyzdžiui monomolekulinė rekombinacija, bimolekulinė ar trimolekulinė (Ožė) rekombinacija. Organiniuose puslaidininkiuose monomolekulinė rekombinacija vyksta, kai judantį krūvininką pagauna rekombinacijos centras. Toks mechanizmas priklauso tik nuo vienų krūvininkų tankio, laikant jog centrų kiekis yra daug didesnis ir nekinta vykstant rekombinacijai. Tuo tarpu esant palyginamiems abiejų ženklų krūvininkų tankiams arba kai krūvininkai juda nestipriame potenciniame lauke, rekombinacijos sparta ima priklausyti nuo abiejų ženklų krūvininkų tankių. Būtent tokios sąlygos yra aprašomame modelyje. Organinėse medžiagose bimolekulinės rekombinacijos vyravimą lemia dar ir tai, kad pernaša vyksta šuoliais arba krūvininkams tuneliuojant per tarpmolekulinius barjerus. Kitaip tariant krūvininkai yra priversti kurį laiką būti lokalizuoti ties viena molekule, ir tuo metu gali rekombinuoti su kitu atėjusiu krūvininku. Trimolekulinė rekombinacija yra nežymi organiniuose puslaidininkiuose, taigi jos galime nepaisyti \cite{juška:143303,juška:013303}.
 Remiantis Lanževeno \cite{langevin} aptartu atveju, efektinė bimolekulinės rekombinacijos sparta yra propocinga krūvinkų judriui:
 \begin{equation}
 B_L=\frac{e}{\varepsilon \varepsilon_0}(\mu_n+\mu_p)
@@ -138,7 +137,7 @@ Rekombinacijos sparta simuliacijoje valdoma keičiant valdantį parametrą \(\et
 
 \subsection{Šviesos sugertis}
 
-Krūvininkų sukūrimui photo-CELIV metodikoje naudojamas šviesos impulsas. Dėl to pradinis krūvininkų pasiskirstymas yra apskaičiuojamas pagal Beer-Lambert’o taisyklę šviesos sugerčiai:
+Laisvųjų krūvininkų sukūrimui photo-CELIV metodikoje naudojamas šviesos impulsas. Dėl to pradinis krūvininkų pasiskirstymas yra apskaičiuojamas pagal Beer-Lambert’o taisyklę šviesos sugerčiai:
 \begin{equation}
 	I(x)=I_0 e^{-\alpha x}
 \end{equation}
