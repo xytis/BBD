@@ -8,9 +8,9 @@
   \label{fig:algoritmas}
 \end{figure}
 
-Krūvininkų pernašos reiškiniai skaitmeniškai modeliuojami jau gana seniai \cite{juška:4946}, tam yra parašyta nemažai programų, tačiau daugelis jų yra pritaikytos vienai medžiagų klasei arba vienam eksperimento variantui analizuoti. Ši programa buvo kurta naudoti eksperimentų metu, kaip pagalbinė priemonė rezultatų interpretavimui. Patogiam rezultatų lyginimui skaičiavimuose naudojami realūs eksperimento parametrai, o ne normuoti dydžiai. Taip pat pradiniai krūvininkų tankiai suskaičiuojami iš šviesos intensyvumo ir sugerties profilio. Laikoma, jog šviesos impulso trukmė yra daug mažesnė už difuzinės relaksacijos ir krūvininkų rekombinacijos trukmes. Programa sprendžia krūvininkų pasiskirstymo uždavinį ir suskaičiuoja teorinę photo-CELIV kinetiką. Pasirinktinai gali būti išvedami krūvininkų arba elektrinio lauko pasiskirstymai bandinyje bet kuriuo laiko momentu.
+Krūvininkų pernašos reiškiniai skaitmeniškai modeliuojami jau gana seniai \cite{juška:4946}, tam yra parašyta nemažai programų, tačiau daugelis jų yra pritaikytos vienai medžiagų klasei arba vienam eksperimento variantui analizuoti. Ši programa buvo kurta naudoti eksperimentų metu, kaip pagalbinė priemonė rezultatų interpretavimui. Patogiam rezultatų lyginimui skaičiavimuose naudojami realūs eksperimento parametrai, o ne normuoti dydžiai. Taip pat pradiniai krūvininkų tankiai suskaičiuojami iš šviesos intensyvumo ir sugerties profilio. Laikoma, jog šviesos impulso trukmė yra daug mažesnė už difuzinės relaksacijos ir krūvininkų rekombinacijos trukmes. Programa sprendžia krūvininkų pasiskirstymo uždavinį ir suskaičiuoja teorinę photo-CELIV srovės kinetiką. Pasirinktinai gali būti išvedami krūvininkų arba elektrinio lauko pasiskirstymai bandinyje bet kuriuo laiko momentu.
 
-Rašant šią programą vienas iš tikslų buvo kuo plačiau ją taikyti, darant kuo mažesnius pakeitimus išeities tekste. Dėl to remtasi objektinio programavimo paradigma, skaidant programos funkcijas į atskirus elementus, kurie veikia nepriklausomai vienas nuo kito ir suteikia vartotojui galimybę keisti programos funkcionalumą nekeičiant pačios programos.
+Rašant šią programą vienas iš tikslų buvo kuo plačiau ją taikyti, darant kuo mažesnius pakeitimus išeities kode. Dėl to remtasi objektinio programavimo paradigma, skaidant programos funkcijas į atskirus elementus, kurie veikia nepriklausomai vienas nuo kito ir suteikia vartotojui galimybę keisti programos funkcionalumą nekeičiant pačios programos.
 \subsection{Veikimas}
 
 \begin{wrapfigure}{r}{0.5\textwidth}
@@ -62,11 +62,12 @@ Norėdami ištirti difuzijos įtaką krūvininkų rekombinacijos spartos matavim
 
 \subsection{Sąlygos}
 \label{page:params}
+Bandinio ir eksperimentiniai parametrai parinkti taip, kad būtų kuo artimesni realiems.
 \begin{itemize}
 \item Trikampio įtampos signalo trukmė 0.1ms, įtampa kinta nuo 0 iki 1V.
 \item Krūvininkų judrių santykis \(\frac{\mu_n}{\mu_p} = 1000\), taigi praktiškai juda tik vieni krūvininkai, mūsų atveju -- su neigiamu krūviu. 
-\item Pasirinkti pilnai blokuojantys bandinio kontaktai, tokie, kad krūvininkai per juos negalėtų nei patekti į bandinį  nei išeiti iš jo. Pora skaičiavimų atlikti su vienu atviru kontaktu.
-\item Pasirinktas šviesos intensyvumo parametras \(I_0 S \equiv L = 10^{10} \) nes su tokia verte pasiekiama soties nuo generacijos intensyvumo vertė, plačiau aprašyta \ref{page:saturation} skyrelyje.
+\item Pasirinkti pilnai blokuojantys bandinio kontaktai, tokie, kad krūvininkai per juos negalėtų nei patekti į bandinį  nei išeiti iš jo.
+\item Kur nenurodyta kitaip naudojamas šviesos intensyvumo parametras \(I_0 S \equiv L = 10^{10} \) nes su tokia verte pasiekiama soties nuo generacijos intensyvumo vertė, plačiau aprašyta \ref{page:saturation} skyrelyje.
 \end{itemize}
 Pavyzdinis tokios simuliacijos įvesties failas pateiktas priede \ref{app:failas}.
 
@@ -74,5 +75,5 @@ Pavyzdinis tokios simuliacijos įvesties failas pateiktas priede \ref{app:failas
 \label{page:specials}
 \begin{itemize}
 \item Visame darbe bus naudojamos srovės kinetikos be talpinio šuolio (žr. \ref{fig:suoliai} pav.).
-\item Skaitmeninio modeliavimo netikslumai neleidžia skaičiuoti su be galo mažu laiko žingsniu, dėl to susidurta su efektyvia krūvininkų kiekio riba, kurią peržengus išryškėja paklaidos dėl C++ \textbf{double} kintamųjų tipo verčių netikslumo. Šią ribą apytiksliai atitinka šviesos intensyvumo parametras $L=10^{20}$.
+\item Skaitmeninio modeliavimo netikslumai neleidžia skaičiuoti su be galo mažu laiko žingsniu, dėl to susidurta su efektyvia krūvininkų kiekio riba, kurią peržengus išryškėja paklaidos dėl C++ \textbf{double} kintamųjų tipo verčių netikslumo. Šią ribą apytiksliai atitinka šviesos intensyvumo parametras $L=10^{20}$. Realiai tokios vertės pasiekti neįmanoma, nes laikantis modelyje nurodytų sąlygų pirmame atomų sluoksnyje būtų generuojama $\frac{L (1-e^{-\alpha a})}{S/a^2}$ elektronų. Kai tarpatominis nuotolis $a = 2$\AA, viename atome būtų sugeneruota $800$ elektronų.
 \end{itemize}

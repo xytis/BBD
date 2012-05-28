@@ -1,68 +1,62 @@
 \section{Rezultatai}
 
-\subsection{Difuzijos įtaka}
+\subsection{Difuzijos srovės palyginimas su dreifo srove}
 
-
-\subsection{Kinetikų soties vertė}
-\label{page:saturation}
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
-	\subfloat[Logaritminė skalė]{
-		\label{fig:saturation_log}
-		\includegraphics[width=0.5\textwidth]{./media/pdf/saturation.pdf}
-		}
-	\subfloat[Pusiau logaritminė skalė]{
-		\label{fig:saturation_semilog}
-		\includegraphics[width=0.5\textwidth]{./media/pdf/semilogsaturation.pdf}
-		}
-  \caption{Kinetikų maksimumo vertės sotinimas nuo šviesos intensyvumo, priklausomai nuo difuzijos ir sugerties profilio, esant minimaliam užlaikymui $t_{delay}$}
+    \includegraphics{./media/pdf/diff_drift.pdf}
+  \caption{Photo-CELIV kinetikos su skirtingais $eU/kT$}
+  \label{fig:comp}
+\end{figure}
+
+Norėdami įvertinti difuzijos įtaką photo-CELIV signalams įsivedėme santykį $eU/kT$. Akivaizdu, jog mažinant šį santykį difuzijos įtaka didės (žr. \ref{fig:comp} pav.). Esant kambario temperatūrai šis koeficientas lygus $40$. Tolesniuose skaičiavimuose naudojama būtent pastaroji vertė.
+
+\subsection{Difuzijos įtaka photo-CELIV srovės sotinimuisi}
+\label{page:saturation}
+\begin{figure}[ht]
+  \centering
+    \includegraphics{./media/pdf/semilogsaturation.pdf}
+  \caption{Photo-CELIV kinetikų maksimumo srovės vertės sotinimasis nuo šviesos intensyvumo, priklausomai nuo difuzijos ir sugerties profilio, esant minimaliai užlaikymo trukmei $t_{delay}$}
   \label{fig:saturation}
 \end{figure}
 
-Rekombinacijos įvertinimui naudojama srovės soties vertė, kai nėra užlaikymo laiko tarp šviesos impulso ir ištraukiančios įtampos impulso. Atlikę srovės soties skaičiavimus (žr. \ref{fig:saturation} pav.) pastebime, jog soties vertė, neįskaitant difuzijos, dėl užlaikymo laiko pakinta per pastovų dydį, nepriklausomai nuo sugerties profilio $\alpha d$. Įskaičius difuziją, srovės soties vertė ima priklausyti nuo $\alpha d$.
+Rekombinacijos įvertinimui eksperimentuose dažniausiai naudojama photo-CELIV srovės soties vertė, kai nėra užlaikymo tarp šviesos impulso ir ištraukiančios įtampos impulso. Skaičiavimuose įtraukėme pastovią užlaikymo trukmę $t_{delay}$, dėl priežasties parodytos \ref{page:limits} skyrelyje. Nustatėme intensyvumo parametro vertę, kuriai esant kinetika yra įsisotinusi. Vėlesniuose skaičiavimuose naudojome parametrą $L=10^{10}$. Pagal \cite{juška:155202} soties vertė, esant bimolekulinei Lanževeno rekombinacijai turėtų artėti į $I_0$. Tačiau suskaičiuotuose rezultatuose (žr. \ref{fig:saturation} pav.) matome, jog srovė sotinasi į vertę, mažesnę už $I_0$. Toliau parodyta, kad ši vertė priklauso nuo užlaikymo trukmės.
+Taip pat matome, jog neįskaičius difuzijos, soties vertė nepriklauso nuo krūvininkų pradinio pasiskirstymo, kinta tik įsisotinimo greitis.
+Įskaičius difuziją, srovės soties vertė ima priklausyti nuo $\alpha d$.
+Suskaičiuoti tarpiniai rezultatai su $\alpha d$ intervale $[0.1 , 10]$ patenka tarp kraštinių kreivių ir dėl aiškumo nepavaizduoti.
 
-Iš šių rezultatų seka dvi išvados:
-\begin{itemize}
-\item Rekombinacijos įvertinimas pagal soties reiškinį jautrus užlaikymo laikui $t_{delay}$.
-\item Veikiant difuzijai kinetikų soties vertė priklauso nuo krūvininkų sugerties profilio.
-\end{itemize}
+\subsection{Užlaikymo trukmės įtaka photo-CELIV srovės sotinimuisi}
 
-\subsection{Rekombinacijos koeficiento vertė}
-
-\begin{figure}
+\begin{figure}[ht]
   \centering
-	\subfloat[Be difuzijos]{
-		\label{fig:delays_nodiff}
-		\includegraphics[width=0.5\textwidth]{./media/pdf/delays_nodiff.pdf}
-		}
-	\subfloat[Su difuzija]{
-		\label{fig:delays_diff}
-		\includegraphics[width=0.5\textwidth]{./media/pdf/delays_diff.pdf}
-		}
+	\includegraphics{./media/pdf/delays.pdf}
   \caption{Photo-CELIV srovės kinetikų soties vertės priklausomybės nuo užlaikymo trukmės $t_{delay}$}
   \label{fig:delays}
 \end{figure}
 
-Norėdami atmesti užlaikymo laiko įtaką kinetikos soties srovei atlikome skaičiavimus su skirtingomis užlaikymo trukmėmis, kurių rezultatai pavaizduoti \ref{fig:delays} paveiksliuke.
+Norėdami įvertinti užlaikymo trukmės įtaką photo-CELIV srovės soties vertei atlikome skaičiavimus su skirtingomis užlaikymo trukmėmis, kurių rezultatai pavaizduoti \ref{fig:delays} paveiksliuke.
 
-Pastebime, [kažkokį rezultatą]
+Pastebime, jog rekombinacijos įvertinimas pagal soties reiškinį jautrus užlaikymo laikui $t_{delay}$. Taip pat šie rezultatai dar kartą parodo, jog veikiant difuzijai kinetikų soties vertė priklauso nuo krūvininkų sugerties profilio. Akivaizdžiai matomas ir bendras soties srovės sumažėjimas dėl difuzijos.
 
-Šie rezultatai dar kartą parodo, jog veikiant difuzijai kinetikų soties vertė priklauso nuo krūvininkų sugerties profilio.
+Suraskime kada Photo-CELIV srovės maksimumo vertė yra proporcinga krūvininkų kiekiui bandinyje. Jei nėra difuzijos ir krūvininkų ištaukimo metu rekombinacijos įtakos krūvininkų kiekiui galime nepaisyti, tai $I_{max} \sim n$, čia $n$ -- krūvininkų tankis. Šiuo atveju remdamiesi krūvininkų tankio lygties su įskaityta rekombinacija sprendiniu $$ n(t) = \frac{1}{\frac{1}{n_0} + \beta t} $$ galime teigti, jog atidėję $I_{max}$ nuo užlaikymo trukmės $t_{delay}$ logaritminiame mastelyje turime gauti tiesę, kurios polinkis $-1$, jei laikysime $\frac{1}{n_0} \rightarrow 0$. Čia $n_0$ -- pradinis krūvininkų tankis.
+Šio teiginio patikrinimui \ref{fig:delays} paveiksliuke nubrėžta tiesė, kurios polinkis $-1$.
 
-\subsection{Judrio vertės matavimai}
-Pagal šią formulę skaičiuojant krūvininkų judrį iš įsisotinusių srovės kinetikų maksimumų gaunama krūvinikų judrio priklausomybė nuo užlaikymo laiko pavaizduota \ref{fig:mobility} paveiksliuke. Anksčiau panašūs rezultatai buvo aiškinami krūvininkų prilipimu \cite{•}. Tačiau šioje simuliacijoje krūvininkų prilipimas nėra įskaitomas, taigi egzistuoja kitos priežastys šiam kitimui.
+\subsection{Judrio vertės skaičiavimai}
 
-\begin{figure}
+\begin{figure}[ht]
   \centering
-	\subfloat[Be difuzijos]{
-		\label{fig:mobility_nodiff}
-		\includegraphics[width=0.5\textwidth]{./media/pdf/log_mobility_nodiff.pdf}
-		}
-	\subfloat[Su difuzija]{
-		\label{fig:mobility_diff}
-		\includegraphics[width=0.5\textwidth]{./media/pdf/log_mobility_diff.pdf}
-		}
+	\includegraphics{./media/pdf/log_mobility.pdf}
   \caption{Krūvininkų judrio skaičiavimo pagal \eqref{eq:judris} formulę rezultatų priklausomybė nuo $t_{delay}$}
   \label{fig:mobility}
 \end{figure}
 
+Pagal \eqref{eq:judris} formulę skaičiuojant krūvininkų judrį iš įsisotinusių srovės kinetikų maksimumų gaunama krūvininkų judrio priklausomybė nuo užlaikymo trukmės pavaizduota \ref{fig:mobility} paveiksliuke. Anksčiau panašūs rezultatai buvo aiškinami krūvininkų prilipimu \cite{???}. Tačiau šioje simuliacijoje krūvininkų prilipimas nėra įskaitomas, taigi egzistuoja kitos priežastys šiam kitimui. Viena iš priežasčių yra krūvininkų kiekio pakitimas dėl rekombinacijos bandinyje paliktame laikui $t_{delay}$. Ankstesniuose darbuose \cite{juška:155202} parodyta, jog dėl pradinio krūvininkų kiekio \eqref{eq:judris} formulėje reikia įskaityti pataisos koeficientą. Antroji priežastis yra krūvininkų pasiskirstymo pakitimas dėl rekombinacijos. Taigi tiksliam judrio įvertinimui reikia suskaičiuoti papildomą pataisos koeficientą, priklausantį nuo užlaikymo trukmės ir rekombinacijos koeficiento.
+
+\begin{figure}[ht]
+  \centering
+	\includegraphics{./media/pdf/separate.pdf}
+  \caption{Photo-CELIV kinetika su atskirtomis srovės dedamosiomis, kurių moduliai didėja dėl pilnai uždarų kontaktų.}
+  \label{fig:separate}
+\end{figure}
+
+Difuzijos įtaką šiems rezultatams galime nagrinėti atskirdami srovės komponentes. Esant paviršiniam pasiskirstymui $\alpha d = 10$ dėl didelio krūvininkų tankio gradiento greitesnieji krūvininkai yra pastumiami į bandinio gilumą. Likusieji greitai rekombinuoja dėl didelio tankio ir tokiu būdų susiformuoja krūvininkų tankio gradientas į priešingą pusę. Tuo pačiu difuzinės srovės kryptis pasikeičia. Ši srovė laipsniškai slopsta. Šio proceso sukurta kinetika pavaizduota \ref{fig:separate} paveiksliuke. Prie tokios komponentės pridėję photo-CELIV signalą (žr. \ref{fig:celiv_example} pav.) gausime $t_{max}$ padidėjimą, taigi suskaičiuotasis krūvininkų judris medžiagoje sumažės.

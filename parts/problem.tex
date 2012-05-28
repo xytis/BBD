@@ -10,7 +10,7 @@
 		\label{fig:exist}
 		\includegraphics[width=0.5\textwidth]{./media/pdf/exist.pdf}
 		}
-  \caption{Difuzijos pikas matomas photo-CELIV srovės kinetikoje}
+  \caption{Difuzijos pikas paslepia photo-CELIV srovės kinetikos maksimumą, esant paviršiniam sužadinimui. Įvedus užlaikymo trukmę $t_{delay}$ galima išskirti srovės kinetikos maksimumą}
   \label{fig:celiv_example}
 \end{figure}
 
@@ -18,20 +18,23 @@ Praeitame darbe \cite{vytis:kursinis} nustatyta, jog esant paviršinei šviesos 
 
 Kai kurie fizikiniai dydžiai gali būti skaičiuojami pagal kinetikos maksimumo vertę ir padėtį, taigi dėl difuzijos komponentės gali kisti šių matavimų rezultatai: rekombinacijos koeficiento ir judrio.
 
-\subsection{Rekombincijos matavimai}
+\subsection{Rekombinacijos skaičiavimai}
 
-Rekombinacijos koeficientas gali būti nustatytas pagal kinetikos maksimumo vertės sotinimasį nuo generuojamų krūvininkų kiekio \cite{juška:155202}. Difuzijos įtakos įvertinimui suskaičiuosime photo-CELIV kinetikas įskaitant difuziją ir be jos. Iš šių kinetikų suskaičiuosime rekombinacijos koeficientą ir palyginsime su tikruoju, kuris naudotas skaičiavimuose.
+Rekombinacijos koeficientas gali būti nustatomas iš photo-CELIV kinetikų dviem būdais: tiriant kinetikos maksimumo vertės priklausomybę nuo \(t_{delay}\) ir 
+stebint kinetikos sotį nuo generuojamų krūvininkų kiekio \cite{juška:155202}.
+Šiame darbe difuzijos įtaką įvertinisime skaičiuodami photo-CELIV kinetikas įskaitant difuziją ir be jos. Iš šių kinetikų suskaičiuotą rekombinacijos koeficientą palyginsime su tikruoju, kuris naudotas skaičiavimuose.
 
 \paragraph{Skaičiavimų ribojimai}
+\label{page:limits}
 Įtraukus difuziją pastebėta, jog esant paviršinei sugerčiai pradinis difuzinės srovės pikas "praryja" srovės maksimumą (žr. \ref{fig:disappear} pav.).
-Norėdami to išvengti visus soties vertės skaičiavimus atlikome su kiek įmanoma mažu uždelsimo laiku $t_{delay} = 3.125ns$, tam kad atskirti pradinį difuzijos piką ir CELIV kinetiką (žr. \ref{fig:exist} pav.). Toks sprendimas nepakeičia suskaičiuotų rezultatų svarbos, nes labai dažnai realaus eksperimento metu egzistuoja laiko tarpas tarp šviesos impulso ir įtampos impulso.
+Norėdami to išvengti visus soties vertės skaičiavimus atlikome su kiek įmanoma mažu uždelsimo laiku $t_{delay} = 3.125ns$, tam kad atskirti pradinį difuzijos piką ir CELIV kinetiką (žr. \ref{fig:exist} pav.). Toks sprendimas nepakeičia suskaičiuotų rezultatų svarbos, nes labai dažnai realaus eksperimento metu egzistuoja laiko tarpas tarp šviesos impulso ir įtampos signalo.
 
-\subsection{Judrio matavimai}
+\subsection{Judrio skaičiavimai}
 Photo-CELIV maksimumo padėtis leidžia nustatyti krūvininkų judrį pagal sąryšį:
 \begin{equation}
 \label{eq:judris}
-\mu = \frac{2d^2}{At_{max}^2}
+\mu = \frac{2d^2}{3At_{max}^2}
 \end{equation}
 
-Pasinaudodami suskaičiuotomis srovės kinetikomis, pagal \eqref{eq:judris} formulę suskaičiuosime krūvininkų judrį ir palyginsime su tikruoju parametru, kuris naudotas skaičiavimuose. Šiuose skaičiavimuose neįtrauksime pataisos koeficiento K \cite{juška:155202}, nes tirsime judrio skaičiavimo validumą esant užlaikymo laikui $t_{delay}$ ir difuzijai.
+Pasinaudodami suskaičiuotomis srovės kinetikomis, pagal \eqref{eq:judris} formulę suskaičiuosime krūvininkų judrį ir palyginsime su tikruoju parametru, kuris naudotas skaičiavimuose. Šiuose skaičiavimuose neįtrauksime pataisos koeficiento K \cite{juška:155202}, nes tirsime judrio skaičiavimo validumą esant užlaikymo trukmei $t_{delay}$ ir vykstant difuzijai.
 
