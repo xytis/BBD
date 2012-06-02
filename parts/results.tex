@@ -10,7 +10,7 @@
 \end{figure}
 
 Norėdami įvertinti difuzijos įtaką photo-CELIV signalams įsivedėme santykį $eU/kT$. Akivaizdu, jog mažinant šį santykį difuzijos įtaka didės (žr. \ref{fig:comp} pav.). Esant kambario temperatūrai šis koeficientas lygus $40$. Tolesniuose skaičiavimuose naudojama būtent pastaroji vertė.
-Paveiksliuke \ref{fig:comp} matomos neigiamos kinetikų dalys atsirandančios dėl difuzijos. Esant dideliam krūvininkų tankio gradientui, dėl Demberio efekto greitesnieji krūvininkai yra paskumiami į bandinio vidų. Prie kontakto likę krūvininkai sparčiai rekombinuoja ir sukuria kitos krypties krūvininkų gradientą. Greitesnieji krūvininkai ima judėti atgal link kontakto, sukurdami neigiamą srovę.
+Paveiksliuke \ref{fig:comp} matomos neigiamos kinetikų dalys atsirandančios dėl difuzijos. Esant dideliam krūvininkų tankio gradientui, dėl Demberio efekto greitesnieji krūvininkai yra paskumiami į bandinio vidų. Prie kontakto likę krūvininkai sparčiai rekombinuoja ir sukuria kitos krypties krūvininkų gradientą. Greitesnieji krūvininkai ima judėti atgal link kontakto, sukurdami neigiamą srovę. Platesnis pastarojo reiškinio aprašymas pateiktas priede \ref{app:negative_current}.
 
 \subsection{Difuzijos įtaka photo-CELIV srovės sotinimuisi}
 \label{page:saturation}
@@ -28,7 +28,7 @@ Suskaičiuoti tarpiniai rezultatai su $\alpha d$ intervale $[0.1 , 10]$ patenka 
 
 \subsection{Užlaikymo trukmės įtaka photo-CELIV srovės sotinimuisi}
 
-\begin{figure}[htb]
+\begin{figure}[H]
   \centering
 	\includegraphics{./media/pdf/delays.pdf}
   \caption{Photo-CELIV srovės kinetikų soties vertės priklausomybės nuo užlaikymo trukmės $t_{delay}$}
@@ -41,6 +41,24 @@ Pastebime, jog rekombinacijos įvertinimas pagal soties reiškinį jautrus užla
 
 Aptarkime, kuomet Photo-CELIV srovės maksimumo vertė yra proporcinga krūvininkų kiekiui bandinyje. Jei nėra difuzijos ir krūvininkų ištaukimo metu rekombinacijos įtakos krūvininkų kiekiui galime nepaisyti, tai $I_{max} \sim n$, čia $n$ -- krūvininkų tankis. Šiuo atveju remdamiesi krūvininkų tankio lygties su įskaityta rekombinacija sprendiniu $$ n(t) = \frac{1}{\frac{1}{n_0} + \beta t} $$ galime teigti, jog atidėję $I_{max}$ nuo užlaikymo trukmės $t_{delay}$ logaritminiame mastelyje turime gauti tiesę, kurios polinkis $-1$, jei laikysime $\frac{1}{n_0} \rightarrow 0$. Čia $n_0$ -- pradinis krūvininkų tankis.
 Šio teiginio patikrinimui \ref{fig:delays} paveiksliuke nubrėžta tiesė, kurios polinkis $-1$.
+
+\subsection{Rekombinacijos įtaka pradinėms sąlygoms}
+\begin{figure}[H]
+  \centering
+	\subfloat[$\alpha d = 0.1$]{
+		\label{fig:recomb_ad=0.1}
+		\includegraphics[width=0.5\textwidth]{./media/pdf/recomb_ad01.pdf}
+		}
+	\subfloat[$\alpha d = 10$]{
+		\label{fig:recomb_ad=10}
+		\includegraphics[width=0.5\textwidth]{./media/pdf/recomb_ad10.pdf}
+		}
+  \caption{Dėl rekombinacijos susilyginančios pradinės sąlygos per užlaikymo trukmę $t_{delay}$, kai nėra difuzijos.}
+  \label{fig:recomb}
+\end{figure}
+
+Dėl rekombinacijos, esant soties sąlygas atitinkančiam šviesos intensyvumui, neįskaitant difuzijos, po užlaikymo laiko $t_{delay}$ bandinyje, nepriklausomai nuo pradinio apšvietimo tipo nusistovi vienodi krūvininkų pasiskirstymai (žr. \ref{fig:recomb} pav.).
+Dėl šio reiškinio, photo-CELIV srovės kinetikų soties vertės, kai nėra difuzijos, sutampa (žr. \ref{fig:delays} pav.).
 
 \subsection{Judrio vertės skaičiavimai}
 

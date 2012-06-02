@@ -1,7 +1,9 @@
 #Ignore all Thesis.*
 Thesis.*
+Presentation.*
 #but leave the source
 !Thesis.tex
+!Presentation.tex
  
 .*
 *.log

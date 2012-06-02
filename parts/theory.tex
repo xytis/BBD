@@ -147,10 +147,10 @@ Simuliacijoje laikome jog apšviečiama bandinio \(x=0\) ploštuma.
 Dažnai vietoje \(\alpha\) naudojamas sugerties profilio parametras \(\alpha d\) kuris priklausomai nuo skaitinės vertės leidžia įvardinti sugerties tipą: \(\alpha d < 1\) sugertis tūrinė, krūvininkai sukuriami beveik vienodai visame tūryje, \(\alpha d > 1\) sugertis paviršinė, beveik visa šviesa sugeriama bandinio paviršiuje. Čia \(d\) yra bandinio storis.
 Laikydami, jog generacijos kvantinis našumas yra lygus vienetui, tai yra, jog vienas fotonas sukuria vieną porą krūvininkų, galime užrašyti pradinį generuotų krūvininkų skaičių:
 \begin{equation}
-	P_0(x) = N_0(x) = I(x)S
+	P_0(x) = N_0(x) = \alpha I(x)S
 \end{equation}
 	
-Čia \(I(x)S\) yra poras kuriančių fotonų skaičius gylyje \(x\).
+Čia \(\alpha I(x)S\) yra poras kuriančių fotonų skaičius gylyje \(x\).
 Taigi pradinės sąlygos priklauso nuo dviejų parametrų: \(I_0\) (šviesos intensyvumo) ir \(\alpha d\) (sugerties profilio). Ankstesniuose skaičiavimuose buvo parodyta šių parametrų įtaka photo-CELIV signalui \cite{juška:155202}.
 
-Programoje generuojamų krūvininkų kiekis valdomas keičiant parametrą \(I_0 S\).
+Programoje generuojamų krūvininkų kiekis valdomas keičiant parametrą \(I_0 S\), o profilis valdomas parametro \( \alpha \).
