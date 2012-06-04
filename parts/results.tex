@@ -1,8 +1,10 @@
 \section{Rezultatai}
 
+
+
 \subsection{Difuzijos srovės palyginimas su dreifo srove}
 
-\begin{figure}[htb]
+\begin{figure}[H]
   \centering
     \includegraphics{./media/pdf/diff_drift.pdf}
   \caption{Photo-CELIV kinetikos su skirtingais $eU/kT$ esant paviršinei krūvininkų generacijai $\alpha d = 100$}
@@ -12,12 +14,29 @@
 Norėdami įvertinti difuzijos įtaką photo-CELIV signalams įsivedėme santykį $eU/kT$. Akivaizdu, jog mažinant šį santykį difuzijos įtaka didės (žr. \ref{fig:comp} pav.). Esant kambario temperatūrai šis koeficientas lygus $40$. Tolesniuose skaičiavimuose naudojama būtent pastaroji vertė.
 Paveiksliuke \ref{fig:comp} matomos neigiamos kinetikų dalys atsirandančios dėl difuzijos. Esant dideliam krūvininkų tankio gradientui, dėl Demberio efekto greitesnieji krūvininkai yra paskumiami į bandinio vidų. Prie kontakto likę krūvininkai sparčiai rekombinuoja ir sukuria kitos krypties krūvininkų gradientą. Greitesnieji krūvininkai ima judėti atgal link kontakto, sukurdami neigiamą srovę. Platesnis pastarojo reiškinio aprašymas pateiktas priede \ref{app:negative_current}.
 
+\subsection{Photo-CELIV srovės kinetikos} 
+\begin{figure}[H]
+    \centering
+	\subfloat[$\alpha d = 0.1$]{
+		\label{fig:transient_ad=0.1}
+		\includegraphics[width=0.5\textwidth]{./media/pdf/transient_ad01.pdf}
+		}
+	\subfloat[$\alpha d = 10$]{
+		\label{fig:transient_ad=10}
+		\includegraphics[width=0.5\textwidth]{./media/pdf/transient_ad10.pdf}
+		}
+  \caption{Photo-CELIV kinetikų pavidalo priklausomybė nuo šviesos intensyvumo, priklausomai nuo sugerties profilio, esant minimaliai užlaikymo trukmei $t_{delay} = 0.07t_{tr}$ ir įskaičius difuziją}
+  \label{fig:transients}
+\end{figure}
+
+Įskaičius difuziją photo-CELIV srovės kinetikos kokybiškai keičiasi keičiant sugerties profilį $\alpha d$. Tai iliustruota \ref{fig:transients} paveiksliuke. Matome, jog didinant šviesos intensyvumą kinetikos įsisotina ir nebekinta.
+
 \subsection{Difuzijos įtaka photo-CELIV srovės sotinimuisi}
 \label{page:saturation}
 \begin{figure}[H]
   \centering
     \includegraphics{./media/pdf/semilogsaturation.pdf}
-  \caption{Photo-CELIV kinetikų maksimumo srovės vertės sotinimasis nuo šviesos intensyvumo, priklausomai nuo difuzijos ir sugerties profilio, esant minimaliai užlaikymo trukmei $t_{delay}$}
+  \caption{Photo-CELIV kinetikų maksimumo srovės vertės sotinimasis nuo šviesos intensyvumo, priklausomai nuo difuzijos ir sugerties profilio, esant minimaliai užlaikymo trukmei $t_{delay} = 0.07t_{tr}$}
   \label{fig:saturation}
 \end{figure}
 
@@ -53,7 +72,7 @@ Aptarkime, kuomet Photo-CELIV srovės maksimumo vertė yra proporcinga krūvinin
 		\label{fig:recomb_ad=10}
 		\includegraphics[width=0.5\textwidth]{./media/pdf/recomb_ad10.pdf}
 		}
-  \caption{Dėl rekombinacijos susilyginančios pradinės sąlygos per užlaikymo trukmę $t_{delay}$, kai nėra difuzijos.}
+  \caption{Dėl rekombinacijos susilyginančios pradinės sąlygos per užlaikymo trukmę $t_{delay} = 0.07t_{tr}$, kai nėra difuzijos.}
   \label{fig:recomb}
 \end{figure}
 
@@ -62,7 +81,7 @@ Dėl šio reiškinio, photo-CELIV srovės kinetikų soties vertės, kai nėra di
 
 \subsection{Judrio vertės skaičiavimai}
 
-\begin{figure}[htb]
+\begin{figure}[H]
   \centering
 	\includegraphics{./media/pdf/log_mobility.pdf}
   \caption{Krūvininkų judrio skaičiavimo pagal \eqref{eq:judris} formulę rezultatų priklausomybė nuo $t_{delay}$}
